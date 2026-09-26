@@ -1,54 +1,152 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#081511"><meta name="description" content="Веб-приложение Бегемот для iPhone: локальная проверка сообщений, приватная история, разговор и справочник. Работает в Safari без установки.">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Бегемот">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101411">
+<meta name="description" content="Бегемот для iPhone: локально проверьте сообщение, сверьте номер и получите спокойный план действий. Работает в Safari без установки.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Бегемот">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://openrouter.ai; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'; media-src 'self'; worker-src 'self'; manifest-src 'self'">
 <title>Бегемот для iPhone · Тайныймир</title>
-<link rel="icon" href="../../../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./assets/icon-180.png"><link rel="manifest" href="./manifest.webmanifest">
-<link rel="stylesheet" href="./style.css"><link rel="stylesheet" href="./v2.css"><link rel="stylesheet" href="./v3.css">
+<link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/icon-180.png">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./style.css">
 </head>
-<body class="webapp">
-<a href="#workspace" class="skip">Перейти к приложению</a>
-<header class="topbar"><a class="brand" href="./" aria-label="Бегемот, главная"><img src="../brand.jpg" alt="" width="48" height="48"><span>бегемот<small>ВЕБ-ПРИЛОЖЕНИЕ · IPHONE</small></span></a><div class="top-actions"><button class="subtle" data-action="help">Как это работает</button><button class="icon-button" data-action="theme" aria-label="Переключить светлую и тёмную тему"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14A8 8 0 0 1 10 4a8 8 0 1 0 10 10Z"/></svg></button></div></header>
-<div id="iosInstallNote" class="ios-install-note" hidden><p><strong>Добавить на экран:</strong> Safari → «Поделиться» → «На экран Домой».</p><button class="icon-button" data-action="dismissInstallPrompt" aria-label="Скрыть подсказку">×</button></div>
-<div class="layout"><main id="workspace" class="workspace" tabindex="-1">
-<h1 class="sr-only">Бегемот — веб-приложение для iPhone</h1>
-<div class="workspace-top"><p class="workspace-note" id="connectionNote">Локальная проверка · без регистрации</p><span class="version">ВЕБ · IPHONE</span></div>
-<nav class="tabs" aria-label="Разделы Бегемота"><button data-view="home">Дом</button><button data-view="check" class="selected" aria-current="page">Проверка</button><button data-view="network">Связь</button><button data-view="chat">Разговор</button><button data-view="us">УС</button><button data-view="install">Настройки</button></nav>
-<section id="homePanel" class="panel" hidden><div class="app-welcome"><img src="../brand.jpg" alt="Кот Бегемот"><div><h2>Сомнения несите мне.</h2><p>Что сегодня распутаем?</p></div></div><div class="quick-grid"><button data-view="check"><strong>Проверить</strong>Сообщение или ссылку</button><button data-view="chat"><strong>Поговорить</strong>Локальные ответы или ИИ</button><button data-view="network"><strong>Наладить связь</strong>Проверить сайт и справочник</button><button data-view="us"><strong>Намотать на ус</strong>Полезные заметки</button></div><p class="fineprint">Откройте нужный раздел прямо в браузере. Установка на экран «Домой» необязательна.</p></section>
-<section id="checkPanel" class="panel">
-<div class="panel-title"><span class="section-number">01</span><div><h2>Что вам прислали?</h2><p>Сообщение, ссылка или сомнительное предложение.</p></div></div>
-<form id="checkForm"><label for="checkInput" class="sr-only">Текст для проверки</label><textarea id="checkInput" maxlength="12000" rows="5" placeholder="Вставьте сюда текст. Например: «Срочно переведите деньги на безопасный счёт»…" spellcheck="false"></textarea><div class="input-footer"><span id="checkCount">Текст остаётся на устройстве</span><button class="clear-input" type="button" data-action="clearCheck">Очистить</button></div><button class="primary full" type="submit"><span>Проверить на устройстве</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg></button></form>
-<div class="examples"><span>Попробовать:</span><button data-sample="scam">«Безопасный счёт»</button><button data-sample="link">Подмена ссылки</button><button data-sample="normal">Обычное сообщение</button></div>
-<div id="checkResult" aria-live="polite"></div>
-<div id="checkEmpty" class="quiet-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6Z M8 12l3 3 5-6"/></svg><p>Покажу признаки риска и следующий шаг. Ссылки не открываю. Отсутствие найденных признаков не гарантирует безопасность.</p></div>
-<section class="v2-block"><h3>На устройстве, без отправки текста</h3><p>Разбор выполняется по встроенным правилам. Ссылки не открываются, а репутация доменов онлайн не проверяется. Если признаков риска не найдено, это не подтверждает безопасность.</p></section>
-</section>
-<section id="networkPanel" class="panel" hidden><section class="v2-block"><h3>Что с интернетом?</h3><p>Проверим ответы сайта Secretworld и передачу тестового файла. Это не измерение скорости тарифа: браузер не показывает уровень сигнала, состояние SIM и настройки оператора.</p><button id="networkTest" class="secondary">Проверить соединение</button><p id="networkResult" class="v2-status" role="status"></p></section><div id="networkAdvanced"></div></section>
-<section id="chatPanel" class="panel" hidden>
-<div class="panel-title"><span class="section-number">02</span><div><h2>Слушаю вас.</h2><p id="chatMode">Локальные подсказки о сообщениях и iPhone.</p></div></div>
-<div class="chat-toolbar"><button class="secondary" data-action="aiSetup" id="setupButton">Подключить ИИ</button><button class="subtle" data-action="clearChat">Новый разговор</button><button class="secondary" id="archiveButton">Архив</button><button class="secondary" id="memoryButton">Память</button></div>
-<div id="chatMessages" class="messages" role="log" aria-live="polite"><div class="bubble"><small>БЕГЕМОТ · ЛОКАЛЬНО</small><p>Я за здоровое любопытство. Особенно когда обещают слишком много. Что разберём?</p></div></div>
-<form id="chatForm"><label for="chatInput" class="sr-only">Сообщение Бегемоту</label><textarea id="chatInput" maxlength="8000" rows="3" placeholder="Например: как проверить подозрительную ссылку?" class="chat-input"></textarea><div class="send-row"><button type="submit" class="primary" id="sendChat">Спросить локально</button><button type="button" class="secondary" id="cancelChat" hidden>Остановить</button></div></form>
-<p class="ai-footnote">Бегемот — помощник, который тоже может ошибаться.</p><p class="fineprint" id="chatPrivacy">Без ключа работают встроенные правила, а не языковая модель. Для свободных вопросов подключите свой ключ OpenRouter.</p>
-</section>
-<section id="usPanel" class="panel" hidden><div class="us-masthead"><h2>УС</h2><p>Наматывай на ус.<br>Маленькие открытия.<br>Большая польза.</p></div><div class="article-controls"><label for="usCategory">Категория</label><select id="usCategory"><option value="">Всё</option><option>Защита</option><option>Связь</option><option>ИИ</option><option>Предложения</option></select></div><div id="usList" class="us-shelf"></div><p id="usStatus" role="status"></p><button id="loadPosts" class="secondary">Загрузить материалы</button></section>
-<section id="installPanel" class="panel" hidden>
-<div class="panel-title"><span class="section-number">03</span><div><h2>Бегемот может остаться.</h2><p>Пользуйтесь в Safari без установки или добавьте ярлык на экран.</p></div></div>
-<p id="deviceHint" class="device-hint"></p>
-<article class="install-option" id="iphoneOption"><div class="option-heading"><h3>Установка на iPhone</h3><span>Без App Store</span></div><p><strong>Кратко:</strong> откройте эту страницу в Safari, нажмите «Поделиться» → «На экран Домой» → «Добавить». Саму страницу можно использовать сразу, не устанавливая.</p><button class="secondary" data-action="copySite">Скопировать ссылку на Бегемота</button></article>
-<article class="install-option"><div class="option-heading"><h3>Офлайн-режим</h3><span>После первого открытия</span></div><p>Safari сохранит файлы приложения и справочники. Проверка сообщений и архив работают на устройстве. Онлайн-ИИ и проверка соединения требуют интернета.</p><button id="installPwa" class="secondary" hidden>Добавить Бегемота</button><button class="subtle" data-view="check">Вернуться к проверке</button><p id="offlineState" class="fineprint" role="status">Подготавливаю офлайн-доступ…</p></article>
-<section class="v2-block"><h3>Голос Бегемота</h3><div class="notification-row"><select id="soundChoice" aria-label="Звук"><option value="purr">Мурчание · 6 секунд</option><option value="meow">Мяу · 5 секунд</option></select><button id="previewSound" class="secondary">Послушать</button><button id="stopSound" class="subtle">Остановить</button></div><p id="soundState" class="fineprint">Звук воспроизводится только на странице после нажатия. Это стилизация, не запись живого кота; он не запускается через push в фоне.</p><button id="checkUpdate" class="secondary">Проверить обновление</button><p id="updateState" role="status"></p></section>
-<section class="v2-block"><h3>Границы веб-версии</h3><p>Safari не передаёт странице SMS, список звонков, уровень сигнала, установленные приложения или их разрешения. Бегемот не блокирует звонки и рекламу в других приложениях и не посылает push-уведомления.</p><p>История выключена по умолчанию. Включите её в «Памяти», если хотите хранить разговоры на этом устройстве.</p><p><a href="../privacy.html">Подробнее о приватности</a></p></section>
-</section>
-<footer class="workspace-footer"><span>Бегемот помогает заметить подвох. Решение остаётся за вами.</span><button class="subtle" data-action="privacy">О данных</button></footer>
-</main></div>
-<footer class="page-footer"><a href="../../../">Тайныймир · Secretworld</a><span>Веб-приложение для iPhone · без установки</span><button class="subtle" data-action="motion" id="motionButton">Выключить анимации</button></footer>
-<dialog id="infoDialog" aria-labelledby="infoTitle"><div class="dialog-header"><h2 id="infoTitle"></h2><button class="icon-button" data-action="closeInfo" aria-label="Закрыть">×</button></div><div id="infoBody"></div></dialog>
-<dialog id="aiDialog" aria-labelledby="aiTitle"><div class="dialog-header"><h2 id="aiTitle">Свободный разговор</h2><button class="icon-button" data-action="closeAI" aria-label="Закрыть">×</button></div><p>Необязательно. Подключите собственный ключ OpenRouter. Он отправляется напрямую OpenRouter для запроса, хранится только в памяти страницы и исчезает при закрытии.</p><form id="aiForm"><label for="apiKey">API-ключ OpenRouter</label><input id="apiKey" name="apiKey" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="1000" placeholder="sk-or-…" required><label for="modelId">Идентификатор модели</label><input id="modelId" name="modelId" type="text" value="openrouter/free" spellcheck="false" autocapitalize="none" maxlength="180" required><p class="fineprint">Доступность и цена зависят от выбранной модели и условий провайдера.</p><label class="consent"><input type="checkbox" id="cloudConsent" required><span>Понимаю: после нажатия «Отправить в ИИ» ключ получит OpenRouter, а вопрос — OpenRouter и провайдер модели. Контекст и память выключены, пока я сам их не включу.</span></label><p id="keyError" class="error-text" role="alert"></p><button class="primary full" type="submit">Использовать в этом сеансе</button></form><button class="subtle" data-action="disconnectAI" id="disconnectAI" hidden>Удалить ключ и перейти в локальный режим</button><p class="fineprint">У Бегемота нет веб-поиска и доступа к телефону. Не вводите коды, пароли и данные банковских карт.</p></dialog>
+<body>
+<a href="#workspace" class="skip-link">Перейти к приложению</a>
+<header class="site-header">
+  <div class="site-shell header-inner">
+    <a class="site-brand" href="../../../" aria-label="Тайныймир — на главную">
+      <span class="site-brand-mark" aria-hidden="true"><img src="../../../favicon.svg" alt="" width="40" height="40"></span>
+      <span><strong>Тайныймир</strong><small>SECRETWORLD · БЕГЕМОТ</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Навигация сайта">
+      <a href="../">О приложении</a>
+      <a href="../privacy.html">Приватность</a>
+    </nav>
+  </div>
+</header>
+<div id="iosInstallNote" class="install-nudge" hidden>
+  <p><strong>Для быстрого доступа:</strong> Safari → Поделиться → На экран Домой.</p>
+  <button class="nudge-close" type="button" data-action="dismissInstallPrompt" aria-label="Скрыть подсказку">×</button>
+</div>
+<main id="workspace" class="site-shell app-main" tabindex="-1">
+  <nav class="app-nav" aria-label="Инструменты Бегемота">
+    <button type="button" class="selected" data-view="check" aria-current="page"><span class="nav-icon" aria-hidden="true">⌕</span><span>Проверка</span></button>
+    <button type="button" data-view="network"><span class="nav-icon" aria-hidden="true">◉</span><span>iPhone</span></button>
+    <button type="button" data-view="chat"><span class="nav-icon" aria-hidden="true">〰</span><span>Разговор</span></button>
+    <button type="button" data-view="us"><span class="nav-icon" aria-hidden="true">✳</span><span>УС</span></button>
+    <button type="button" data-view="install"><span class="nav-icon" aria-hidden="true">···</span><span>Ещё</span></button>
+  </nav>
+  <div class="app-status"><span class="status-dot" aria-hidden="true"></span><span id="connectionNote">Локальная проверка · без регистрации</span><span class="status-separator">·</span><span>Веб-приложение</span></div>
+
+  <section id="checkPanel" class="panel">
+    <div class="check-intro">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> БЕГЕМОТ · ВАШ СПОКОЙНЫЙ ПОМОЩНИК</p>
+        <h1>Сначала проверим.<br><span>Потом решим.</span></h1>
+        <p class="hero-lead">Вставьте подозрительное сообщение или ссылку. Я отмечу, что стоит перепроверить, и подскажу следующий шаг.</p>
+      </div>
+      <aside class="companion-card" aria-label="Бегемот">
+        <div class="companion-orbit orbit-a"></div><div class="companion-orbit orbit-b"></div>
+        <img src="../brand.jpg" alt="Кот Бегемот" width="120" height="120">
+        <div class="companion-caption"><small>Я РЯДОМ</small><strong>Не торопимся.</strong></div>
+      </aside>
+    </div>
+    <form id="checkForm" class="check-card">
+      <label for="checkInput">Что вам прислали?</label>
+      <p class="field-hint">Проверка идёт на этом устройстве. Текст никуда не отправляется.</p>
+      <textarea id="checkInput" maxlength="12000" rows="5" placeholder="Вставьте сообщение, адрес сайта или предложение…" spellcheck="false" autocapitalize="sentences"></textarea>
+      <div class="input-meta"><span id="checkCount">Текст останется на iPhone</span><button class="text-button" type="button" data-action="clearCheck">Очистить</button></div>
+      <div class="form-actions"><button class="secondary" type="button" data-action="pasteClipboard">Вставить из буфера</button><button class="primary" type="submit">Разобрать <span aria-hidden="true">→</span></button></div>
+    </form>
+    <div class="examples"><span>Попробовать:</span><button type="button" data-sample="scam">Просят код</button><button type="button" data-sample="link">Странная ссылка</button><button type="button" data-sample="normal">Обычное сообщение</button></div>
+    <div id="checkResult" aria-live="polite"></div>
+    <div id="checkEmpty" class="check-empty"><span class="empty-mark" aria-hidden="true">✓</span><p>Бегемот ищет настораживающие признаки по встроенным правилам. Он не открывает сайты и не подтверждает их безопасность.</p></div>
+    <div class="privacy-strip"><span>⌁</span><p><strong>Локально и без аккаунта.</strong> Если в сообщении есть пароли, коды или платёжные данные, удалите их перед вставкой.</p></div>
+  </section>
+
+  <section id="networkPanel" class="panel" hidden>
+    <div class="panel-heading"><p class="eyebrow">ПОМОЩЬ ДЛЯ IPHONE</p><h2>Разберёмся по шагам.</h2><p>Этот экран не читает SMS и звонки и не видит настройки телефона. Выберите ситуацию — Бегемот подскажет, что проверить самостоятельно.</p></div>
+    <div class="iphone-tools">
+      <article class="tool-card phone-card">
+        <div class="tool-kicker"><span>01</span><span>СПРАВОЧНИК SECRETWORLD</span></div>
+        <h3>Кто звонил?</h3>
+        <p>Сверьте номер с опубликованными официальными контактами. Номер остаётся в браузере; совпадение не подтверждает, кто именно звонил.</p>
+        <label for="webPhone">Номер телефона</label>
+        <div class="phone-form"><input id="webPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 000 000-00-00"><button id="webPhoneFind" class="primary" type="button">Сверить</button></div>
+        <p id="webPhoneResult" class="tool-result" role="status" aria-live="polite"></p>
+      </article>
+      <article class="tool-card guide-card">
+        <div class="tool-kicker"><span>02</span><span>ПОДСКАЗКА ПО СИТУАЦИИ</span></div>
+        <h3>Что случилось?</h3>
+        <label for="iosIssue">Выберите проблему</label>
+        <select id="iosIssue">
+          <option value="connection">Сайт или интернет не открывается</option>
+          <option value="permission">Приложение просит странный доступ</option>
+          <option value="profile">Нашёлся неизвестный профиль или VPN</option>
+        </select>
+        <button id="runIosGuide" class="secondary" type="button">Показать план</button>
+        <div id="iosPlan" class="ios-plan" aria-live="polite"><p>План поможет сузить причину. Меняйте по одной настройке за раз и возвращайте её, если ничего не изменилось.</p></div>
+      </article>
+    </div>
+    <p class="limitation-note"><strong>Граница веб-версии.</strong> Только установленное приложение может анализировать системные звонки или SMS. В Safari Бегемот не видит уровень сигнала, SIM, список приложений и их разрешения; он не блокирует звонки и рекламу в других приложениях.</p>
+  </section>
+
+  <section id="chatPanel" class="panel" hidden>
+    <div class="panel-heading chat-heading"><div><p class="eyebrow">МОЖНО ПОГОВОРИТЬ</p><h2>Я слушаю.</h2><p id="chatMode">Локальные подсказки по безопасности и iPhone.</p></div><div class="chat-toolbar"><button class="text-button" data-action="aiSetup" id="setupButton" type="button">Подключить ИИ</button><button class="icon-action" id="archiveButton" type="button">История</button><button class="icon-action" id="memoryButton" type="button">Заметки</button></div></div>
+    <div id="chatMessages" class="messages" role="log" aria-live="polite"><div class="bubble"><small>БЕГЕМОТ · ЛОКАЛЬНО</small><p>Можем разобрать сообщение, ссылку или вопрос про настройки iPhone. С чего начнём?</p></div></div>
+    <form id="chatForm" class="chat-compose"><label for="chatInput">Ваш вопрос</label><textarea id="chatInput" maxlength="8000" rows="3" placeholder="Напишите, что разберём…" class="chat-input"></textarea><div class="send-row"><button type="submit" class="primary" id="sendChat">Спросить локально</button><button type="button" class="secondary" id="cancelChat" hidden>Остановить</button><button type="button" class="text-button" data-action="clearChat">Новый разговор</button></div></form>
+    <p class="ai-note" id="chatPrivacy">Без ключа отвечают встроенные правила, а не языковая модель. Свободный ИИ можно включить отдельно и подключить своим ключом OpenRouter; вопрос получат провайдеры ИИ.</p>
+  </section>
+
+  <section id="usPanel" class="panel" hidden>
+    <div class="panel-heading"><p class="eyebrow">ЗАМЕТКИ И НАХОДКИ</p><h2>Намотать на ус.</h2><p>Короткие материалы о защите, связи и цифровых привычках.</p></div>
+    <div class="article-controls"><label for="usCategory">Показать</label><select id="usCategory"><option value="">Все темы</option><option>Защита</option><option>Связь</option><option>ИИ</option><option>Предложения</option></select></div>
+    <div id="usList" class="us-shelf"></div>
+    <p id="usStatus" class="tool-result" role="status"></p>
+    <button id="loadPosts" class="secondary" type="button">Загрузить материалы</button>
+  </section>
+
+  <section id="installPanel" class="panel" hidden>
+    <div class="panel-heading"><p class="eyebrow">БЫСТРЫЙ ДОСТУП И ДАННЫЕ</p><h2>Всё под рукой.</h2><p id="deviceHint">Эта веб-версия работает в браузере. На iPhone откройте её в Safari.</p></div>
+    <div class="more-grid">
+      <article class="tool-card">
+        <div class="tool-kicker"><span>01</span><span>САФАРИ</span></div><h3>Добавить на экран</h3>
+        <p>Safari → Поделиться → На экран Домой → Добавить. Можно пользоваться и без ярлыка.</p>
+        <button class="secondary" data-action="shareSite" type="button">Поделиться ссылкой</button>
+      </article>
+      <article class="tool-card">
+        <div class="tool-kicker"><span>02</span><span>РАБОТА БЕЗ СЕТИ</span></div><h3>Офлайн-доступ</h3>
+        <p id="offlineState" role="status">Готовлю офлайн-доступ…</p>
+        <button id="installPwa" class="secondary" type="button" hidden>Установить веб-приложение</button>
+        <button id="checkUpdate" class="text-button" type="button">Проверить обновление</button>
+        <p id="updateState" class="tool-result" role="status"></p>
+      </article>
+      <article class="tool-card">
+        <div class="tool-kicker"><span>03</span><span>НА ЭТОМ УСТРОЙСТВЕ</span></div><h3>История и заметки</h3>
+        <p>По умолчанию история выключена. Включите её сами; Safari может очистить данные сайта.</p>
+        <div class="inline-actions"><button class="secondary" type="button" id="moreMemory">Настроить память</button><button class="text-button" type="button" id="moreArchive">Открыть историю</button></div>
+      </article>
+    </div>
+    <details class="appearance-settings"><summary>Внешний вид и звук</summary><div class="appearance-row"><button class="text-button" data-action="theme" type="button">Сменить тему</button><button class="text-button" data-action="motion" id="motionButton" type="button">Выключить анимации</button></div><div class="appearance-row sound-row"><label for="soundChoice">Звук Бегемота</label><select id="soundChoice" aria-label="Звук Бегемота"><option value="purr">Мурчание</option><option value="meow">Мяу</option></select><button id="previewSound" class="secondary" type="button">Послушать</button><button id="stopSound" class="text-button" type="button">Стоп</button></div><p id="soundState" class="tool-result">Звук включается только нажатием на этой странице.</p></details>
+    <div class="limitation-note"><strong>Без лишнего доступа.</strong> Проверка текста работает локально. История хранится в этом браузере только по вашему выбору. Push не подключён: для него нужен сервер отправки. <button class="text-button" type="button" data-action="privacy">Подробнее о данных</button></div>
+  </section>
+  <footer class="app-footer"><a href="../../../">Тайныймир · Secretworld</a><span>Бегемот помогает заметить подвох. Решение остаётся за вами.</span></footer>
+</main>
+<dialog id="infoDialog" aria-labelledby="infoTitle"><div class="dialog-header"><h2 id="infoTitle"></h2><button class="nudge-close" data-action="closeInfo" type="button" aria-label="Закрыть">×</button></div><div id="infoBody"></div></dialog>
+<dialog id="aiDialog" aria-labelledby="aiTitle"><div class="dialog-header"><h2 id="aiTitle">Свободный разговор с ИИ</h2><button class="nudge-close" data-action="closeAI" type="button" aria-label="Закрыть">×</button></div><p>Необязательно. Ваш ключ используется только в этой вкладке и не отправляется Secretworld. OpenRouter и выбранная модель получат ваш вопрос. Настройки оплаты и лимитов задаются у провайдера.</p><form id="aiForm"><label for="apiKey">API-ключ OpenRouter</label><input id="apiKey" name="apiKey" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="1000" placeholder="sk-or-…" required><label for="modelId">Модель</label><input id="modelId" name="modelId" type="text" value="openrouter/free" spellcheck="false" autocapitalize="none" maxlength="180" required><p class="tool-result">Ключ хранится в памяти страницы и исчезает при закрытии.</p><label class="consent"><input type="checkbox" id="cloudConsent" required><span>Понимаю, что вопрос отправится OpenRouter и провайдеру выбранной модели только после моего нажатия.</span></label><p id="keyError" class="error-text" role="alert"></p><button class="primary full" type="submit">Подключить на этот сеанс</button></form><button class="text-button" data-action="disconnectAI" id="disconnectAI" type="button" hidden>Удалить ключ</button><p class="fineprint">Не вводите одноразовые коды, пароли и данные банковских карт.</p></dialog>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <noscript><div class="no-script">Для работы веб-приложения включите JavaScript.</div></noscript>
-<script src="./engine.js" defer></script><script src="./rich.js" defer></script><script src="./chat-store.js" defer></script><script src="./archive-ui.js" defer></script><script src="./app.js" defer></script><script src="./web-v3.js" defer></script><script src="./features.js" defer></script>
-</body></html>
+<script src="./engine.js" defer></script>
+<script src="./rich.js" defer></script>
+<script src="./chat-store.js" defer></script>
+<script src="./archive-ui.js" defer></script>
+<script src="./app.js" defer></script>
+<script src="./web-v3.js" defer></script>
+<script src="./features.js" defer></script>
+</body>
+</html>

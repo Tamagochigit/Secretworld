@@ -1,7 +1,7 @@
 'use strict';
 (()=>{
- const $=s=>document.querySelector(s);
- $('#archiveButton').addEventListener('click',()=>BegemotArchiveUI.archive());
- $('#memoryButton').addEventListener('click',()=>BegemotArchiveUI.settings());
- $('#networkAdvanced').innerHTML='<section class="v2-block"><h3>Что проверить на iPhone</h3><p>Веб-страница не видит SIM, уровень сигнала или настройки оператора. Сравните Wi-Fi и мобильную сеть; проверьте, открываются ли ещё два знакомых сайта. Если проблема только в одной сети, начните с её настроек или обратитесь к оператору.</p><details><summary>Как сузить причину</summary><p>Сбой только у одного сайта в обеих сетях — вероятно, дело в сайте. Сбой только по Wi-Fi — проверьте роутер и расстояние до него. Сбой на iPhone в обеих сетях — временно отключите VPN или профиль DNS по одному и проверьте снова.</p><p>Меняйте одну обратимую настройку за раз. Это помогает сузить поиск, но не доказывает причину.</p></details></section><section class="v2-block"><h3>Справочник организаций</h3><p>В этом локально загружаемом справочнике — официальные номера организаций. Введённый номер не отправляется в запросе. Справочник небольшой и не распознаёт незнакомые звонки.</p><label class="sr-only" for="webPhone">Номер телефона</label><input id="webPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7…"><button id="webPhoneFind" class="secondary">Найти подпись</button><p id="webPhoneResult" role="status" class="v2-status"></p></section>';
+ document.getElementById('archiveButton').addEventListener('click',()=>BegemotArchiveUI.archive());
+ document.getElementById('memoryButton').addEventListener('click',()=>BegemotArchiveUI.settings());
+ document.getElementById('moreArchive').addEventListener('click',()=>BegemotArchiveUI.archive());
+ document.getElementById('moreMemory').addEventListener('click',()=>BegemotArchiveUI.settings());
 })();

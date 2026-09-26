@@ -36,6 +36,7 @@ us_page = (ROOT / "apps/begemot/us/index.html").read_text(encoding="utf-8")
 admin = (ROOT / "apps/begemot/admin/index.html").read_text(encoding="utf-8")
 iphone = (ROOT / "apps/begemot/iphone/index.html").read_text(encoding="utf-8")
 iphone_webv3 = (ROOT / "apps/begemot/iphone/web-v3.js").read_text(encoding="utf-8")
+iphone_features = (ROOT / "apps/begemot/iphone/features.js").read_text(encoding="utf-8")
 iphone_manifest = json.loads((ROOT / "apps/begemot/iphone/manifest.webmanifest").read_text(encoding="utf-8"))
 iphone_assets = [ROOT / "apps/begemot/iphone" / x["src"] for x in iphone_manifest.get("icons", [])]
 workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
@@ -56,12 +57,13 @@ checks = {
     "Begemot catalog link": "apps/begemot/" in home,
     "Begemot app page": "Бегемот" in begemot and "0.6.5" in begemot and "50" in begemot,
     "privacy page": "Приватность" in privacy and "журнал звонков" in privacy,
-    "iPhone web app page": all(x in iphone for x in ("id=" + chr(34) + "checkForm", "id=" + chr(34) + "chatForm", "id=" + chr(34) + "networkTest", "id=" + chr(34) + "usList", "id=" + chr(34) + "archiveButton", "manifest.webmanifest")) and "platform-switch" not in iphone and "webPhoneFind" in iphone_webv3,
+    "iPhone web app page": all(x in iphone for x in ("id=" + chr(34) + "checkForm", "id=" + chr(34) + "chatForm", "id=" + chr(34) + "webPhoneFind", "id=" + chr(34) + "runIosGuide", "id=" + chr(34) + "usList", "id=" + chr(34) + "archiveButton", "manifest.webmanifest")) and "platform-switch" not in iphone and "webPhoneFind" in iphone_features and "homePanel" not in iphone,
     "iPhone install manifest": iphone_manifest.get("scope") == "./" and all(p.is_file() for p in iphone_assets),
     "Planet T favicon linked sitewide": all("rel=" + chr(34) + "icon" in page.read_text(encoding="utf-8") for page in pages) and (ROOT / "favicon.svg").is_file(),
     "Separate iPhone app links": "apps/begemot/iphone/" in home and "Веб-приложение для iPhone" in begemot and "platform-switch" not in begemot,
     "Pages deploy workflow": all(x in workflow for x in ("configure-pages@v5", "upload-pages-artifact@v4", "deploy-pages@v4", "pages: write", "id-token: write")),
-    "Official Russian phone feed and provenance": directory_valid and len(directory_items) >= 14,
+    "Official Russian phone feed and provenance": directory_valid and len(directory_items) >= 12,
+    "Excluded organization names absent from public directory": not any(name in json.dumps(directory, ensure_ascii=False) for name in ("Сбер", "МТС")),
     "Localized UС content feed": len(us_items) >= 7 and all(
         x.get("id") and x.get("translations", {}).get("ru", {}).get("title") and x.get("translations", {}).get("ru", {}).get("body")
         and x.get("translations", {}).get("en", {}).get("title") and x.get("translations", {}).get("en", {}).get("body")
