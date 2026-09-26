@@ -33,8 +33,8 @@ p, h1, h2, h3 { margin-top: 0; }
   min-height: 88px;
   padding-top: env(safe-area-inset-top);
 }
-.iphone-site .brand-mark img { display: block; width: 100%; height: 100%; }
-.iphone-site .brand small { letter-spacing: .15em; }
+.iphone-site .brand { display: block; min-width: 0; }
+.iphone-site .brand strong { color: var(--green); font-size: 13px; font-weight: 750; letter-spacing: .08em; white-space: nowrap; }
 .iphone-site .site-nav a { white-space: nowrap; }
 .app-main { max-width: 1040px; padding-top: 23px; padding-bottom: 46px; }
 
@@ -290,7 +290,6 @@ body[data-motion="off"] *, body[data-motion="off"] *::before, body[data-motion="
 }
 @media (max-width: 760px) {
   .iphone-site .site-header { min-height: 70px; }
-  .iphone-site .brand-mark { width: 35px; height: 35px; }
   .app-main { padding-top: 15px; padding-bottom: 34px; }
   .app-nav { gap: 22px; }
   .app-nav button { min-height: 40px; font-size: 12px; }
@@ -312,13 +311,10 @@ body[data-motion="off"] *, body[data-motion="off"] *::before, body[data-motion="
   .install-nudge { width: calc(100% - 44px); }
 }
 @media (max-width: 520px) {
-  .iphone-site .site-header { min-height: 72px; }
-  .iphone-site .brand { gap: 8px; }
-  .iphone-site .brand-mark { width: 34px; height: 34px; }
-  .iphone-site .brand strong { font-size: 13px; }
-  .iphone-site .brand small { font-size: 7px; letter-spacing: .1em; }
-  .iphone-site .site-nav { gap: 12px; }
-  .iphone-site .site-nav a { font-size: 9px; }
+  .iphone-site .site-header { display: grid; min-height: 0; grid-template-columns: 1fr; justify-content: stretch; gap: 8px; padding-top: calc(12px + env(safe-area-inset-top)); padding-bottom: 12px; }
+  .iphone-site .brand strong { font-size: 12px; }
+  .iphone-site .site-nav { justify-content: space-between; gap: 12px; }
+  .iphone-site .site-nav a { font-size: 10px; }
   .app-main { padding-top: 10px; }
   .app-nav { gap: 18px; }
   .app-nav button { font-size: 11px; }
@@ -359,9 +355,9 @@ body[data-motion="off"] *, body[data-motion="off"] *::before, body[data-motion="
   .dialog-header h2 { font-size: 22px; }
 }
 @media (max-width: 360px) {
-  .iphone-site .brand small { display: none; }
+  .iphone-site .brand strong { font-size: 10.5px; letter-spacing: .06em; }
   .iphone-site .site-nav { gap: 9px; }
-  .iphone-site .site-nav a { font-size: 8px; }
+  .iphone-site .site-nav a { font-size: 9px; }
   .check-hero .hero-copy h1 { font-size: 36px; }
   .check-hero .hero-art { min-height: 220px; }
   .app-nav { gap: 14px; }

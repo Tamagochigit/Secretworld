@@ -4,10 +4,10 @@
  let currentView='check',result=null,key='',model='openrouter/free',controller=null,busy=false,pwaPrompt=null,toastTimer=null;
  let SYSTEM_PROMPT='Ты Бегемот. Отвечай по-русски кратко, чистым текстом без Markdown. Не выдумывай доступ к устройству, веб-поиску или выполненные действия. Не запрашивай секреты.';fetch('./system-prompt.txt').then(r=>r.ok?r.text():Promise.reject()).then(s=>{SYSTEM_PROMPT=s;}).catch(()=>{});
  const siteUrl=new URL('./',location.href).href;
- let theme='auto',motion=true;
- try{theme=localStorage.getItem('begemot-theme')||'auto';motion=localStorage.getItem('begemot-motion')!=='off';}catch{}
- function setTheme(){document.body.dataset.theme=theme==='auto'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):theme;document.body.dataset.motion=motion?'on':'off';$('#motionButton').textContent=motion?'Выключить анимации':'Включить анимации';}
- setTheme();const lightMode=matchMedia('(prefers-color-scheme: light)');if(lightMode.addEventListener)lightMode.addEventListener('change',setTheme);else lightMode.addListener(setTheme);
+ let theme='dark',motion=true;
+ try{theme=localStorage.getItem('begemot-theme')==='light'?'light':'dark';motion=localStorage.getItem('begemot-motion')!=='off';}catch{}
+ function setTheme(){document.body.dataset.theme=theme;document.body.dataset.motion=motion?'on':'off';$('#motionButton').textContent=motion?'Выключить анимации':'Включить анимации';}
+ setTheme();
  function toast(t){$('#toast').textContent=t;$('#toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('show'),4200);}
  function info(title,html){$('#infoTitle').textContent=title;$('#infoBody').innerHTML=html;if(!$('#infoDialog').open)$('#infoDialog').showModal();}
  function view(v,scroll=true){
