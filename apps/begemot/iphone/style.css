@@ -277,6 +277,8 @@ body[data-theme="light"] .result.danger { background: #fbefeb; }
 body[data-theme="light"] .result.review { background: #f8f2e5; }
 body[data-theme="light"] .install-nudge { background: #eaf3e9; }
 body[data-theme="light"] .check-empty { background: #fff; }
+body[data-theme="light"] .art-label { border-color: #173b2824; background: #fffffff0; box-shadow: 0 10px 30px #173b2810; }
+body[data-theme="light"] .art-label strong { color: var(--text); }
 body[data-theme="light"] .app-nav button.selected { color: var(--text); }
 body[data-theme="light"] .site-footer a { color: var(--muted); }
 
