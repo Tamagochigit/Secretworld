@@ -1,0 +1,36 @@
+{
+ "id": "./",
+ "name": "Бегемот — веб-приложение для iPhone",
+ "short_name": "Бегемот",
+ "description": "Проверка сообщений и разговор с Бегемотом в Safari.",
+ "lang": "ru",
+ "start_url": "./?view=check&source=homescreen",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#081511",
+ "theme_color": "#081511",
+ "icons": [
+  {
+   "src": "./assets/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "./assets/icon-512.jpg",
+   "sizes": "512x512",
+   "type": "image/jpeg",
+   "purpose": "any"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Проверить сообщение",
+   "url": "./?view=check"
+  },
+  {
+   "name": "Поговорить с Бегемотом",
+   "url": "./?view=chat"
+  }
+ ]
+}

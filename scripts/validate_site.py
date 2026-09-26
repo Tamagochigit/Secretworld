@@ -15,7 +15,7 @@ class Links(HTMLParser):
             if attrs.get(name):
                 self.refs.append(attrs[name])
 
-pages = [ROOT / "index.html", ROOT / "apps/begemot/index.html", ROOT / "apps/begemot/privacy.html", ROOT / "apps/begemot/us/index.html", ROOT / "apps/begemot/admin/index.html"]
+pages = [ROOT / "index.html", ROOT / "apps/begemot/index.html", ROOT / "apps/begemot/iphone/index.html", ROOT / "apps/begemot/privacy.html", ROOT / "apps/begemot/us/index.html", ROOT / "apps/begemot/admin/index.html"]
 for page in pages:
     parser = Links()
     parser.feed(page.read_text(encoding="utf-8"))
@@ -34,6 +34,10 @@ begemot = (ROOT / "apps/begemot/index.html").read_text(encoding="utf-8")
 privacy = (ROOT / "apps/begemot/privacy.html").read_text(encoding="utf-8")
 us_page = (ROOT / "apps/begemot/us/index.html").read_text(encoding="utf-8")
 admin = (ROOT / "apps/begemot/admin/index.html").read_text(encoding="utf-8")
+iphone = (ROOT / "apps/begemot/iphone/index.html").read_text(encoding="utf-8")
+iphone_webv3 = (ROOT / "apps/begemot/iphone/web-v3.js").read_text(encoding="utf-8")
+iphone_manifest = json.loads((ROOT / "apps/begemot/iphone/manifest.webmanifest").read_text(encoding="utf-8"))
+iphone_assets = [ROOT / "apps/begemot/iphone" / x["src"] for x in iphone_manifest.get("icons", [])]
 workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
 directory = json.loads((ROOT / "apps/begemot/data/directory.json").read_text(encoding="utf-8"))
 directory_items = directory.get("items", [])
@@ -52,6 +56,10 @@ checks = {
     "Begemot catalog link": "apps/begemot/" in home,
     "Begemot app page": "Бегемот" in begemot and "0.6.5" in begemot and "50" in begemot,
     "privacy page": "Приватность" in privacy and "журнал звонков" in privacy,
+    "iPhone web app page": all(x in iphone for x in ("id=" + chr(34) + "checkForm", "id=" + chr(34) + "chatForm", "id=" + chr(34) + "networkTest", "id=" + chr(34) + "usList", "id=" + chr(34) + "archiveButton", "manifest.webmanifest")) and "platform-switch" not in iphone and "webPhoneFind" in iphone_webv3,
+    "iPhone install manifest": iphone_manifest.get("scope") == "./" and all(p.is_file() for p in iphone_assets),
+    "Planet T favicon linked sitewide": all("rel=" + chr(34) + "icon" in page.read_text(encoding="utf-8") for page in pages) and (ROOT / "favicon.svg").is_file(),
+    "Separate iPhone app links": "apps/begemot/iphone/" in home and "Веб-приложение для iPhone" in begemot and "platform-switch" not in begemot,
     "Pages deploy workflow": all(x in workflow for x in ("configure-pages@v5", "upload-pages-artifact@v4", "deploy-pages@v4", "pages: write", "id-token: write")),
     "Official Russian phone feed and provenance": directory_valid and len(directory_items) >= 14,
     "Localized UС content feed": len(us_items) >= 7 and all(
@@ -62,6 +70,7 @@ checks = {
     "Website material reader": "data/us.json" in us_page and "data-lang=\"en\"" in us_page and "data-lang=\"ru\"" in us_page,
     "GitHub Pages content admin": "api.github.com/repos/Tamagochigit/Secretworld/contents/apps/begemot/data/us.json" in admin and "Contents: Read and write" in admin and "localStorage" not in admin and "sessionStorage" not in admin,
     "No old GPT content API in reader or admin": "neurozona.chatgpt.site/api/posts" not in us_page + admin,
+    "iPhone app has no legacy backend calls": "/api/" not in iphone and "neurozona.chatgpt.site" not in iphone,
 }
 failed = [name for name, ok in checks.items() if not ok]
 print(f"site_contract_test: {len(checks) - len(failed)}/{len(checks)} PASS")
