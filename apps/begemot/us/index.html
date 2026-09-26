@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101411"><meta name="description" content="Материалы УС Бегемота: практичные заметки о связи, защите и ИИ.">
+<title>УС — материалы Бегемота · Secretworld</title><link rel="stylesheet" href="../../../style.css">
+</head>
+<body>
+<main class="us-page">
+  <nav class="us-top"><a href="../">← <span data-t="back">К Бегемоту</span></a><div class="lang-switch" aria-label="Language"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div></nav>
+  <header class="us-heading"><p class="eyebrow">БЕГЕМОТ · SECRETWORLD</p><h1 data-t="title">Наматывай на ус</h1><p data-t="lead">Небольшие выпуски о звонках, защите, связи и ИИ. Сверяйте важное и выбирайте подходящее.</p></header>
+  <section class="us-controls" aria-label="Material filters"><label><span data-t="search">Поиск</span><input id="search" type="search" autocomplete="off" data-placeholder="searchHint" placeholder="Заголовок или текст"></label><label><span data-t="shelf">Полка</span><select id="category"><option value="" data-t="all">Все материалы</option></select></label></section>
+  <p id="status" class="us-status" role="status" aria-live="polite" data-t="loading">Загружаю материалы…</p>
+  <section id="articles" class="us-articles" aria-label="Articles"></section>
+  <footer class="us-footer"><a href="../">Бегемот</a><span>Тайныймир · Secretworld</span><a href="../admin/" data-t="admin">Админка материалов</a></footer>
+</main>
+<script>
+(()=>{'use strict';
+const copy={ru:{back:'К Бегемоту',title:'Наматывай на ус',lead:'Небольшие выпуски о звонках, защите, связи и ИИ. Сверяйте важное и выбирайте подходящее.',search:'Поиск',searchHint:'Заголовок или текст',shelf:'Полка',all:'Все материалы',loading:'Загружаю материалы…',empty:'Пока нет материалов по этому фильтру.',failed:'Материалы сейчас не загрузились. Проверьте интернет и попробуйте снова.',updated:'Обновлено',read:'Читать выпуск',admin:'Админка материалов',categories:{Защита:'Защита',Связь:'Связь',ИИ:'ИИ',Предложения:'Предложения'}},en:{back:'Back to Begemot',title:'A note to remember',lead:'Short issues about calls, protection, connectivity, and AI. Check what matters and choose what works for you.',search:'Search',searchHint:'Title or text',shelf:'Shelf',all:'All materials',loading:'Loading materials…',empty:'No materials match this filter yet.',failed:'Materials could not be loaded. Check your connection and try again.',updated:'Updated',read:'Read issue',admin:'Content admin',categories:{Защита:'Protection',Связь:'Connectivity',ИИ:'AI',Предложения:'Offers'}}};
+const ui={search:document.querySelector('#search'),category:document.querySelector('#category'),status:document.querySelector('#status'),articles:document.querySelector('#articles')};let lang=(navigator.language||'ru').toLowerCase().startsWith('en')?'en':'ru',items=[];
+const localized=(x)=>x.translations?.[lang]||x.translations?.ru||x;
+function setLang(next){lang=next;document.documentElement.lang=lang;document.querySelectorAll('[data-t]').forEach(n=>{const key=n.dataset.t;n.textContent=copy[lang][key]||n.textContent});ui.search.placeholder=copy[lang].searchHint;document.querySelectorAll('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));fillCategories();render();}
+function fillCategories(){const old=ui.category.value;ui.category.replaceChildren(new Option(copy[lang].all,''));const cats=[...new Set(items.map(x=>x.category).filter(Boolean))];for(const cat of cats){const op=new Option(copy[lang].categories[cat]||cat,cat);ui.category.add(op)}if(cats.includes(old))ui.category.value=old;}
+function render(){ui.articles.replaceChildren();const q=ui.search.value.trim().toLocaleLowerCase(lang),cat=ui.category.value;const rows=items.filter(x=>x.active!==false).filter(x=>!cat||x.category===cat).filter(x=>{const t=localized(x);return !q||`${t.title} ${t.category} ${t.body}`.toLocaleLowerCase(lang).includes(q)}).sort((a,b)=>b.published.localeCompare(a.published));for(const x of rows){const t=localized(x),article=document.createElement('article'),meta=document.createElement('p'),h=document.createElement('h2'),details=document.createElement('details'),summary=document.createElement('summary'),body=document.createElement('div');article.className='us-article';meta.className='us-article-meta';meta.textContent=`${t.category} · ${new Date(x.published).toLocaleDateString(lang==='en'?'en-GB':'ru-RU')}`;h.textContent=t.title;summary.textContent=copy[lang].read;body.className='us-article-body';body.textContent=t.body;details.append(summary,body);article.append(meta,h,details);ui.articles.append(article)}ui.status.textContent=rows.length?`${rows.length} · ${copy[lang].updated} ${items[0]?.published?new Date(items[0].published).toLocaleDateString(lang==='en'?'en-GB':'ru-RU'):''}`:copy[lang].empty;}
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));ui.search.addEventListener('input',render);ui.category.addEventListener('change',render);setLang(lang);fetch('../data/us.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{if(!Array.isArray(d.items))throw Error();items=d.items;fillCategories();render()}).catch(()=>{ui.status.textContent=copy[lang].failed});
+})();
+</script>
+</body></html>

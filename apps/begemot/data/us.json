@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-26",
+  "items": [
+    {
+      "id": "pause",
+      "title": "Пауза — ваша суперсила",
+      "category": "Защита",
+      "body": "Когда сообщение торопит, сначала верните себе время. Не переходите по вложенной ссылке и не продолжайте разговор под диктовку.\n\nОткройте знакомое приложение самостоятельно. Найдите операцию в нём. Если нужен звонок, возьмите номер из приложения или с уже имеющегося документа.\n\nТрюк Бегемота: спросите себя «Что изменится, если я проверю это через десять минут?» Требование действовать немедленно — повод остановиться, а не доказательство подлинности.\n\nНамотайте на ус: чужая срочность не должна становиться вашим решением.",
+      "published": "2026-09-10T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Пауза — ваша суперсила",
+          "category": "Защита",
+          "body": "Когда сообщение торопит, сначала верните себе время. Не переходите по вложенной ссылке и не продолжайте разговор под диктовку.\n\nОткройте знакомое приложение самостоятельно. Найдите операцию в нём. Если нужен звонок, возьмите номер из приложения или с уже имеющегося документа.\n\nТрюк Бегемота: спросите себя «Что изменится, если я проверю это через десять минут?» Требование действовать немедленно — повод остановиться, а не доказательство подлинности.\n\nНамотайте на ус: чужая срочность не должна становиться вашим решением."
+        },
+        "en": {
+          "title": "A pause is a superpower",
+          "category": "Protection",
+          "body": "When a message creates urgency, give yourself time back. Do not follow its link or continue a conversation under someone else’s direction.\n\nOpen the familiar app yourself. Find the transaction there. If you need to call, use a number from the app or from a document you already have.\n\nBegemot’s trick: ask yourself, “What changes if I check this in ten minutes?” A demand to act immediately is a reason to pause, not proof that the message is genuine.\n\nKeep in mind: someone else’s urgency should not make your decision for you."
+        }
+      }
+    },
+    {
+      "id": "two-networks",
+      "title": "Две сети лучше одного предположения",
+      "category": "Связь",
+      "body": "Один медленный сайт ещё не означает плохой интернет. Выберите два разных знакомых сервиса и откройте их сначала по Wi-Fi, затем через мобильную сеть.\n\nЕсли сбоит только один сервис в обеих сетях, начните с него. Если всё плохо только по Wi-Fi, проверьте расстояние до роутера и другие устройства. Если обе сети работают плохо лишь на этом телефоне, посмотрите VPN, DNS и фоновые загрузки.\n\nМеняйте одну настройку за раз. Записывайте, что изменили, чтобы можно было вернуться.\n\nНамотайте на ус: сравнение помогает сузить причину, но не заменяет измерение.",
+      "published": "2026-09-09T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Две сети лучше одного предположения",
+          "category": "Связь",
+          "body": "Один медленный сайт ещё не означает плохой интернет. Выберите два разных знакомых сервиса и откройте их сначала по Wi-Fi, затем через мобильную сеть.\n\nЕсли сбоит только один сервис в обеих сетях, начните с него. Если всё плохо только по Wi-Fi, проверьте расстояние до роутера и другие устройства. Если обе сети работают плохо лишь на этом телефоне, посмотрите VPN, DNS и фоновые загрузки.\n\nМеняйте одну настройку за раз. Записывайте, что изменили, чтобы можно было вернуться.\n\nНамотайте на ус: сравнение помогает сузить причину, но не заменяет измерение."
+        },
+        "en": {
+          "title": "Two networks are better than one guess",
+          "category": "Connectivity",
+          "body": "One slow website does not necessarily mean your internet is bad. Choose two familiar services and open them first over Wi-Fi, then over mobile data.\n\nIf only one service fails on both networks, start there. If everything works poorly only on Wi-Fi, check your distance from the router and try another device. If both networks work poorly only on this phone, check VPN, DNS, and background downloads.\n\nChange one setting at a time. Write down what you changed so you can undo it.\n\nKeep in mind: comparing helps narrow down the cause, but it does not replace a measurement."
+        }
+      }
+    },
+    {
+      "id": "permissions",
+      "title": "Разрешения должны соответствовать делу",
+      "category": "Защита",
+      "body": "Камера понятна видеосвязи, микрофон — записи голоса. Задавайте каждому разрешению простой вопрос: для какой моей задачи оно нужно?\n\nОтдельного внимания заслуживают специальные возможности, чтение уведомлений, показ поверх окон и установка других приложений. Это сильные полномочия. Они могут быть нужны полезной программе, но их стоит проверить у незнакомой.\n\nОткройте карточку приложения. Отзовите ненужное разрешение и проверьте работу. Если приложение незнакомо и не нужно, удалите его через системное подтверждение.\n\nНамотайте на ус: необычный доступ — основание для проверки, а не готовый диагноз «вирус».",
+      "published": "2026-09-08T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Разрешения должны соответствовать делу",
+          "category": "Защита",
+          "body": "Камера понятна видеосвязи, микрофон — записи голоса. Задавайте каждому разрешению простой вопрос: для какой моей задачи оно нужно?\n\nОтдельного внимания заслуживают специальные возможности, чтение уведомлений, показ поверх окон и установка других приложений. Это сильные полномочия. Они могут быть нужны полезной программе, но их стоит проверить у незнакомой.\n\nОткройте карточку приложения. Отзовите ненужное разрешение и проверьте работу. Если приложение незнакомо и не нужно, удалите его через системное подтверждение.\n\nНамотайте на ус: необычный доступ — основание для проверки, а не готовый диагноз «вирус»."
+        },
+        "en": {
+          "title": "Permissions should match the task",
+          "category": "Protection",
+          "body": "A camera makes sense for video calls, and a microphone for recording your voice. Ask one simple question about every permission: what task of mine needs it?\n\nPay special attention to Accessibility, notification access, displaying over other apps, and installing other apps. These are powerful permissions. A useful app may need them, but an unfamiliar app deserves a closer look.\n\nOpen the app’s system details. Revoke a permission you do not need and check whether the app still works. If the app is unfamiliar and unnecessary, uninstall it through Android’s confirmation.\n\nKeep in mind: unusual access is a reason to check, not a diagnosis of a “virus”."
+        }
+      }
+    },
+    {
+      "id": "ai-question",
+      "title": "Хороший вопрос экономит время и токены",
+      "category": "ИИ",
+      "body": "Дайте Бегемоту цель, обстоятельства и желаемый результат.\n\nНапример: «На Android медленно открываются сайты по Wi-Fi. Мобильная сеть работает. Дай три обратимых шага, без сброса телефона».\n\nНе вставляйте пароли, одноразовые коды и данные карт. Заменяйте имена и номера нейтральными обозначениями, если они не важны для ответа.\n\nПопросите отделить наблюдения от предположений. Для важных свежих сведений нужны проверяемые источники: уверенный тон ИИ не делает информацию актуальной.\n\nНамотайте на ус: хороший помощник объясняет границы своего знания.",
+      "published": "2026-09-07T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Хороший вопрос экономит время и токены",
+          "category": "ИИ",
+          "body": "Дайте Бегемоту цель, обстоятельства и желаемый результат.\n\nНапример: «На Android медленно открываются сайты по Wi-Fi. Мобильная сеть работает. Дай три обратимых шага, без сброса телефона».\n\nНе вставляйте пароли, одноразовые коды и данные карт. Заменяйте имена и номера нейтральными обозначениями, если они не важны для ответа.\n\nПопросите отделить наблюдения от предположений. Для важных свежих сведений нужны проверяемые источники: уверенный тон ИИ не делает информацию актуальной.\n\nНамотайте на ус: хороший помощник объясняет границы своего знания."
+        },
+        "en": {
+          "title": "A clear question saves time and tokens",
+          "category": "AI",
+          "body": "Give Begemot a goal, the relevant circumstances, and the result you want.\n\nFor example: “On Android, websites load slowly over Wi-Fi. Mobile data works. Give me three reversible steps, without resetting the phone.”\n\nDo not include passwords, one-time codes, or card details. Replace names and phone numbers with neutral labels when they do not matter to the answer.\n\nAsk it to separate observations from assumptions. Important current facts need sources you can check: an AI’s confident tone does not make information up to date.\n\nKeep in mind: a good assistant explains the limits of what it knows."
+        }
+      }
+    },
+    {
+      "id": "real-host",
+      "title": "Смотрим, куда действительно ведёт ссылка",
+      "category": "Защита",
+      "body": "Название известного сервиса в тексте ссылки может быть декорацией. В адресе https://bank.example@other.example настоящий узел — other.example: часть перед @ не определяет сайт назначения.\n\nВ адресе https://bank.example.other.example владельцем адресного пространства обычно является other.example. Замок HTTPS говорит о шифровании соединения, а не о честности владельца.\n\nВажные операции удобнее начинать из самостоятельно открытого приложения или закладки. Бегемот показывает домены из текста и признаки подмены, не посещая подозрительный сайт.\n\nНамотайте на ус: читаем адрес, а не обещание рядом с ним.",
+      "published": "2026-09-06T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Смотрим, куда действительно ведёт ссылка",
+          "category": "Защита",
+          "body": "Название известного сервиса в тексте ссылки может быть декорацией. В адресе https://bank.example@other.example настоящий узел — other.example: часть перед @ не определяет сайт назначения.\n\nВ адресе https://bank.example.other.example владельцем адресного пространства обычно является other.example. Замок HTTPS говорит о шифровании соединения, а не о честности владельца.\n\nВажные операции удобнее начинать из самостоятельно открытого приложения или закладки. Бегемот показывает домены из текста и признаки подмены, не посещая подозрительный сайт.\n\nНамотайте на ус: читаем адрес, а не обещание рядом с ним."
+        },
+        "en": {
+          "title": "Check where a link really leads",
+          "category": "Protection",
+          "body": "A familiar service name in a link can be decoration. In https://bank.example@other.example, the actual host is other.example: the part before @ does not determine the destination.\n\nIn https://bank.example.other.example, the owner of the address space is usually other.example. The HTTPS padlock means the connection is encrypted; it does not prove that the site owner is honest.\n\nFor important actions, start from an app you opened yourself or a bookmark. Begemot shows domains in the text and signs of impersonation without visiting the suspicious website.\n\nKeep in mind: read the address, not the promise beside it."
+        }
+      }
+    },
+    {
+      "id": "update",
+      "title": "Обновляйте кота, сохраняйте контроль",
+      "category": "Защита",
+      "body": "Новая версия может исправлять ошибки и добавлять возможности. Устанавливайте обновления из той же проверенной точки распространения.\n\nВ Бегемоте обновление сначала обнаруживается, затем по вашей кнопке загружается. Перед установкой проверяются контрольная сумма, имя пакета и совместимость подписи. Последнее слово остаётся за системным установщиком Android.\n\nНе удаляйте приложение перед обычным обновлением: так проще сохранить настройки. Сброс данных — отдельное действие, а не стандартный этап обновления.\n\nНамотайте на ус: предложение обновиться не должно требовать код от банка.",
+      "published": "2026-09-05T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "Обновляйте кота, сохраняйте контроль",
+          "category": "Защита",
+          "body": "Новая версия может исправлять ошибки и добавлять возможности. Устанавливайте обновления из той же проверенной точки распространения.\n\nВ Бегемоте обновление сначала обнаруживается, затем по вашей кнопке загружается. Перед установкой проверяются контрольная сумма, имя пакета и совместимость подписи. Последнее слово остаётся за системным установщиком Android.\n\nНе удаляйте приложение перед обычным обновлением: так проще сохранить настройки. Сброс данных — отдельное действие, а не стандартный этап обновления.\n\nНамотайте на ус: предложение обновиться не должно требовать код от банка."
+        },
+        "en": {
+          "title": "Update the cat, keep control",
+          "category": "Protection",
+          "body": "A new version may fix bugs or add features. Install updates from the same trusted source you normally use.\n\nBegemot first checks whether an update exists, then downloads it only after you press the button. Before installation, it checks the file hash, package name, and signing-certificate compatibility. Android’s installer has the final say.\n\nDo not uninstall the app before an ordinary update: keeping it installed helps preserve your settings. Resetting app data is a separate action, not a normal update step.\n\nKeep in mind: an update prompt should never ask for your bank code."
+        }
+      }
+    },
+    {
+      "id": "dns",
+      "title": "DNS: полезный фильтр с понятным выходом",
+      "category": "Связь",
+      "body": "DNS помогает телефону найти адрес сервиса. Фильтрующий DNS может не выдавать адреса доменов, внесённых в списки рекламы и угроз.\n\nОн не убирает всю рекламу и не читает содержимое зашифрованных страниц. Провайдер DNS при этом обрабатывает запросы доменных имён — выбирайте его осознанно.\n\nЕсли после изменения DNS пропала связь, верните режим «Автоматически» и повторите проверку. Это обратимый шаг, который помогает проверить гипотезу о причине сбоя.\n\nНамотайте на ус: у хорошей настройки есть понятный путь назад.",
+      "published": "2026-09-04T08:00:00.000Z",
+      "active": true,
+      "translations": {
+        "ru": {
+          "title": "DNS: полезный фильтр с понятным выходом",
+          "category": "Связь",
+          "body": "DNS помогает телефону найти адрес сервиса. Фильтрующий DNS может не выдавать адреса доменов, внесённых в списки рекламы и угроз.\n\nОн не убирает всю рекламу и не читает содержимое зашифрованных страниц. Провайдер DNS при этом обрабатывает запросы доменных имён — выбирайте его осознанно.\n\nЕсли после изменения DNS пропала связь, верните режим «Автоматически» и повторите проверку. Это обратимый шаг, который помогает проверить гипотезу о причине сбоя.\n\nНамотайте на ус: у хорошей настройки есть понятный путь назад."
+        },
+        "en": {
+          "title": "DNS: a useful filter with a clear way back",
+          "category": "Connectivity",
+          "body": "DNS helps your phone find a service’s address. A filtering DNS provider can refuse addresses for domains on ad and threat lists.\n\nIt does not remove every ad or read the contents of encrypted pages. The DNS provider does process domain-name requests, so choose one deliberately.\n\nIf connectivity stops after you change DNS, switch back to “Automatic” and check again. This is a reversible step that helps test whether DNS caused the problem.\n\nKeep in mind: a good setting has a clear way back."
+        }
+      }
+    }
+  ]
+}
