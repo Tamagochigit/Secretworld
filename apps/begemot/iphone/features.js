@@ -9,26 +9,6 @@
   catch(e){if(e.name==='AbortError')throw new Error('Запрос не успел завершиться. Проверьте интернет и повторите.');throw e;}
   finally{clearTimeout(timer);}
  }
- let items=[],postsLoaded=false;
- async function posts(){
-  if(postsLoaded)return;
-  const button=$('#loadPosts');button.disabled=true;$('#usStatus').textContent='Загружаю материалы…';
-  try{const d=await getJSON('../data/us.json');items=(d.items||[]).filter(x=>x.active!==false&&x.translations?.ru?.title&&x.translations?.ru?.body&&x.published<=new Date().toISOString()).sort((a,b)=>b.published.localeCompare(a.published));postsLoaded=true;renderPosts();}
-  catch(e){$('#usStatus').textContent=e.message;button.hidden=false;}
-  finally{button.disabled=false;}
- }
- function renderPosts(){
-  const category=$('#usCategory').value,list=items.filter(x=>!category||x.translations.ru.category===category);
-  $('#usList').innerHTML=list.map((x,i)=>'<article class="us-card"><span class="us-number">'+String(i+1).padStart(2,'0')+'</span><p class="us-meta">'+esc(x.translations.ru.category)+' · '+new Date(x.published).toLocaleDateString('ru-RU')+'</p><h3>'+esc(x.translations.ru.title)+'</h3><p>'+esc(x.translations.ru.body.slice(0,150))+'…</p><button class="secondary" type="button" data-read-post="'+esc(x.id)+'">Читать</button></article>').join('')||'<p>Пока нет материалов по этой категории.</p>';
-  $('#usStatus').textContent='Материалы загружаются из открытого справочника Secretworld. Текст проверки и ваши вопросы к запросу не добавляются.';$('#loadPosts').hidden=true;
- }
- $('#usCategory').addEventListener('change',()=>{if(postsLoaded)renderPosts();});$('#loadPosts').addEventListener('click',posts);
- document.addEventListener('click',e=>{
-  if(e.target.closest('[data-view="us"]'))posts();
-  const b=e.target.closest('[data-read-post]');if(!b)return;
-  const x=items.find(q=>q.id===b.dataset.readPost);if(!x)return;
-  const v=x.translations.ru;$('#infoTitle').textContent=v.title;$('#infoBody').innerHTML='<div class="us-reader">'+BegemotRich.html(v.body)+'</div>';$('#infoDialog').showModal();
- });
  function normalPhone(raw){let n=String(raw||'').replace(/\D/g,'');if(n.length===11&&n[0]==='8')n='7'+n.slice(1);if(n.length===10)n='7'+n;return n;}
  const phoneInput=$('#webPhone'),phoneResult=$('#webPhoneResult'),phoneButton=$('#webPhoneFind');
  async function findPhone(){

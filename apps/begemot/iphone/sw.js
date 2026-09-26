@@ -1,11 +1,11 @@
 'use strict';
-const CACHE='begemot-iphone-shell-v2';
+const CACHE='begemot-iphone-shell-v3';
 const SHELL=[
  './','./index.html','./style.css','./engine.js','./rich.js','./chat-store.js',
  './archive-ui.js','./app.js','./features.js','./web-v3.js','./system-prompt.txt',
  './manifest.webmanifest','./assets/icon-180.png','./assets/icon-192.png',
  './assets/icon-512.jpg','./assets/purr.mp3','./assets/meow.mp3','../brand.jpg',
- '../data/directory.json','../data/us.json','../../../favicon.svg'
+ '../data/directory.json','../../../style.css','../../../favicon.svg'
 ];
 const ALLOWED=new Set(SHELL.map(p=>new URL(p,self.registration.scope).pathname));
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()));});

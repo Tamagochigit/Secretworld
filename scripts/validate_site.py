@@ -35,8 +35,8 @@ privacy = (ROOT / "apps/begemot/privacy.html").read_text(encoding="utf-8")
 us_page = (ROOT / "apps/begemot/us/index.html").read_text(encoding="utf-8")
 admin = (ROOT / "apps/begemot/admin/index.html").read_text(encoding="utf-8")
 iphone = (ROOT / "apps/begemot/iphone/index.html").read_text(encoding="utf-8")
-iphone_webv3 = (ROOT / "apps/begemot/iphone/web-v3.js").read_text(encoding="utf-8")
 iphone_features = (ROOT / "apps/begemot/iphone/features.js").read_text(encoding="utf-8")
+iphone_sw = (ROOT / "apps/begemot/iphone/sw.js").read_text(encoding="utf-8")
 iphone_manifest = json.loads((ROOT / "apps/begemot/iphone/manifest.webmanifest").read_text(encoding="utf-8"))
 iphone_assets = [ROOT / "apps/begemot/iphone" / x["src"] for x in iphone_manifest.get("icons", [])]
 workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
@@ -57,7 +57,9 @@ checks = {
     "Begemot catalog link": "apps/begemot/" in home,
     "Begemot app page": "Бегемот" in begemot and "0.6.5" in begemot and "50" in begemot,
     "privacy page": "Приватность" in privacy and "журнал звонков" in privacy,
-    "iPhone web app page": all(x in iphone for x in ("id=" + chr(34) + "checkForm", "id=" + chr(34) + "chatForm", "id=" + chr(34) + "webPhoneFind", "id=" + chr(34) + "runIosGuide", "id=" + chr(34) + "usList", "id=" + chr(34) + "archiveButton", "manifest.webmanifest")) and "platform-switch" not in iphone and "webPhoneFind" in iphone_features and "homePanel" not in iphone,
+    "iPhone web app page": all(x in iphone for x in ("id=" + chr(34) + "checkForm", "id=" + chr(34) + "chatForm", "id=" + chr(34) + "webPhoneFind", "id=" + chr(34) + "runIosGuide", "id=" + chr(34) + "archiveButton", "manifest.webmanifest", "href=\"../\"", "href=\"../us/\"", "../../../style.css", "class=\"site-shell app-main catalog-page\"")) and "platform-switch" not in iphone and "webPhoneFind" in iphone_features and "homePanel" not in iphone,
+    "iPhone app keeps UС materials on the website": not any(x in iphone + iphone_features + iphone_sw for x in ("usPanel", "usList", "loadPosts", "data/us.json", "data-view=\"us\"")) and "href=\"../us/\"" in iphone,
+    "iPhone app shares the Secretworld design system": "../../../style.css" in iphone and "class=\"hero-grid check-hero\"" in iphone and "class=\"brand\"" in iphone and "class=\"site-footer\"" in iphone,
     "iPhone install manifest": iphone_manifest.get("scope") == "./" and all(p.is_file() for p in iphone_assets),
     "Planet T favicon linked sitewide": all("rel=" + chr(34) + "icon" in page.read_text(encoding="utf-8") for page in pages) and (ROOT / "favicon.svg").is_file(),
     "Separate iPhone app links": "apps/begemot/iphone/" in home and "Веб-приложение для iPhone" in begemot and "platform-switch" not in begemot,
