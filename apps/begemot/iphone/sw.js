@@ -1,5 +1,5 @@
 'use strict';
-const CACHE='begemot-iphone-shell-v3';
+const CACHE='begemot-iphone-shell-v4';
 const SHELL=[
  './','./index.html','./style.css','./engine.js','./rich.js','./chat-store.js',
  './archive-ui.js','./app.js','./features.js','./web-v3.js','./system-prompt.txt',
