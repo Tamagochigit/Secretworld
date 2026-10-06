@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101411">
-  <meta name="description" content="Тайныймир · Secretworld — независимый каталог приложений. Знакомьтесь с Бегемотом и новыми проектами.">
+  <meta name="description" content="Тайныймир · Secretworld — независимый каталог приложений. Бегемот для связи и защиты, Бюро других жизней для досуга и открытий.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
   <title>Тайныймир · Secretworld — приложения</title>
   <link rel="stylesheet" href="style.css">
@@ -32,7 +32,7 @@
             <a class="button button-primary" href="#apps">Открыть каталог <span aria-hidden="true">↓</span></a>
             <a class="button button-quiet" href="apps/begemot/">Познакомиться с Бегемотом <span aria-hidden="true">↗</span></a>
           </div>
-          <p class="hero-note"><span>01</span> приложение в каталоге <i aria-hidden="true"></i> новые проекты появятся здесь</p>
+          <p class="hero-note"><span>02</span> приложения в каталоге <i aria-hidden="true"></i> новые проекты появятся здесь</p>
         </div>
         <a class="hero-art" href="apps/begemot/" aria-label="Открыть страницу Бегемота">
           <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
@@ -47,15 +47,42 @@
           <div><p class="eyebrow">КАТАЛОГ</p><h2>Приложения</h2></div>
           <p>Каждый проект — отдельная страница с описанием и правилами приватности.</p>
         </div>
-        <article class="app-card">
-          <a class="app-icon" href="apps/begemot/" aria-label="Страница приложения Бегемот"><img src="apps/begemot/brand.jpg" alt=""></a>
-          <div class="app-card-copy">
-            <div class="app-card-top"><span class="app-category">ANDROID · ВЕБ ДЛЯ IPHONE</span><span class="status-pill">ALPHA 0.6.5</span></div>
-            <h3><a href="apps/begemot/">Бегемот</a></h3>
-            <p>Помощник для звонков, SMS, диагностики связи и проверки приложений. Сверка звонков выполняется на телефоне.</p>
-            <div class="app-card-bottom"><div class="tag-list"><span>Android 10+</span><span>Safari · без установки</span></div><div class="catalog-app-links"><a class="text-link" href="apps/begemot/">Страница Android <span aria-hidden="true">→</span></a><a class="text-link" href="apps/begemot/iphone/">Открыть веб-приложение iPhone <span aria-hidden="true">→</span></a></div></div>
-          </div>
-        </article>
+        <nav class="catalog-categories" aria-label="Категории приложений">
+          <a href="#leisure">Досуг и открытия</a>
+          <a href="#connection">Связь и защита</a>
+        </nav>
+
+        <section id="leisure" class="catalog-group" aria-labelledby="leisure-title">
+          <h3 id="leisure-title">Досуг и открытия</h3>
+          <article class="app-card">
+            <a class="app-icon" href="apps/bureau-other-lives/" aria-label="Страница приложения Бюро других жизней"><img src="apps/bureau-other-lives/icon.svg" alt=""></a>
+            <div class="app-card-copy">
+              <div class="app-card-top"><span class="app-category">ANDROID · ВЕБ</span><span class="status-pill">ТЕСТОВАЯ 0.4.1</span></div>
+              <h4><a href="apps/bureau-other-lives/">Бюро других жизней</a></h4>
+              <p>Маленькие приключения, новые роли и личный дневник открытий. Начните с одной из 20 готовых миссий.</p>
+              <div class="app-card-bottom">
+                <div class="tag-list"><span>Android 8+</span><span>Без регистрации</span></div>
+                <div class="catalog-app-links">
+                  <a class="text-link" href="apps/bureau-other-lives/">Об приложении <span aria-hidden="true">→</span></a>
+                  <a class="text-link" href="https://github.com/Tamagochigit/bureau-other-lives/raw/refs/heads/main/downloads/bureau-0.4.1.apk">Скачать APK · 0.4.1 <span aria-hidden="true">↓</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section id="connection" class="catalog-group" aria-labelledby="connection-title">
+          <h3 id="connection-title">Связь и защита</h3>
+          <article class="app-card">
+            <a class="app-icon" href="apps/begemot/" aria-label="Страница приложения Бегемот"><img src="apps/begemot/brand.jpg" alt=""></a>
+            <div class="app-card-copy">
+              <div class="app-card-top"><span class="app-category">ANDROID · ВЕБ ДЛЯ IPHONE</span><span class="status-pill">ALPHA 0.6.5</span></div>
+              <h4><a href="apps/begemot/">Бегемот</a></h4>
+              <p>Помощник для звонков, SMS, диагностики связи и проверки приложений. Сверка звонков выполняется на телефоне.</p>
+              <div class="app-card-bottom"><div class="tag-list"><span>Android 10+</span><span>Safari · без установки</span></div><div class="catalog-app-links"><a class="text-link" href="apps/begemot/">Страница Android <span aria-hidden="true">→</span></a><a class="text-link" href="apps/begemot/iphone/">Открыть веб-приложение iPhone <span aria-hidden="true">→</span></a></div></div>
+            </div>
+          </article>
+        </section>
         <div class="catalog-foot"><span class="catalog-mark" aria-hidden="true">✳</span><p>Здесь будут появляться новые приложения Тайныймир.</p></div>
       </section>
 
