@@ -50,12 +50,11 @@ body{background:radial-gradient(ellipse 620px 350px at 96% 5%,#deeddd,transparen
 <div id="notice" class="note"></div>
 
 <div class="ai-panel" id="aiPanel">
-<div class="ai-head"><div><span class="smallcaps">ИИ-помощник · Cloudflare AI</span><h3>Найти смысл за жалобами</h3><p>Три бизнес-гипотезы с подтверждающими отзывами и планом проверки. Для ИИ нужна одна бесплатная настройка владельца сервиса.</p></div><span class="ai-model">GLM-4.7-Flash</span></div>
-<div class="field ai-field"><label for="aiEndpoint">Адрес ИИ-сервера (Cloudflare Worker)</label><input id="aiEndpoint" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="https://invisible-business-ai.ваш-аккаунт.workers.dev"></div>
-<p class="ai-help">Адрес сохраняется только на этом устройстве. После подключения Cloudflare пользователям не нужны API-ключи и аккаунты. <a href="https://github.com/Tamagochigit/Secretworld/tree/main/apps/invisible-business/cloudflare" target="_blank" rel="noopener noreferrer">Инструкция по запуску Worker ↗</a></p>
+<div class="ai-head"><div><span class="smallcaps">ИИ-помощник · Cloudflare AI</span><h3>Найти смысл за жалобами</h3><p>Три бизнес-гипотезы с подтверждающими отзывами и планом проверки. ИИ уже подключён к отдельному защищённому серверу.</p></div><span class="ai-model">GLM-4.7-Flash</span></div>
+<p class="ai-help"><strong>ИИ подключён:</strong> Cloudflare Workers AI. Работает без входа и API-ключей для посетителей, в пределах бесплатной квоты аккаунта. Адрес сервера задан автоматически.</p>
 <label class="ai-consent"><input id="aiConsent" type="checkbox"> <span>Разрешаю отправить до 25 выбранных текстов отзывов на указанный ИИ-сервер. Я удалил из них персональные данные.</span></label>
 <button class="button primary" id="aiRun" type="button">Углубить с ИИ ↗</button>
-<p class="ai-help">Cloudflare Workers AI даёт бесплатный дневной лимит, но облачный анализ заработает только после публикации Worker. Обычный анализ полностью бесплатен, без облака и регистрации.</p>
+<p class="ai-help">Cloudflare Workers AI использует бесплатный дневной лимит. Если квота закончится, локальный анализ по-прежнему работает без облака и регистрации.</p>
 <div class="ai-message" id="aiMessage" role="status" aria-live="polite"></div>
 <div class="ai-out hidden" id="aiOutput"></div>
 </div>
@@ -124,16 +123,15 @@ function aiMarkdown(){
 }
 $('aiRun').addEventListener('click',async()=>{
  if(!report||!report.data.length){aiStatus('Сначала запустите обычный анализ.',true);return}
- const entry=$('aiEndpoint').value.trim();
+ const entry='https://invisible-business-ai.ai-2af.workers.dev';
  let target;
  try{
   target=new URL(entry);
   if(target.protocol!=='https:'||target.username||target.password||target.port)throw Error('Invalid endpoint');
   target.pathname=target.pathname.replace(/\/+$/,'')+'/analyze';
   target.search='';target.hash='';
- }catch{aiStatus('Сначала укажите HTTPS-адрес опубликованного Cloudflare Worker.',true);return}
+ }catch{aiStatus('Адрес ИИ-сервера недоступен: сообщите разработчику.',true);return}
  if(!$('aiConsent').checked){aiStatus('Сначала подтвердите передачу отзывов в этот ИИ-сервис.',true);return}
- try{localStorage.setItem('invisible-business-ai-endpoint',entry)}catch{}
  const btn=$('aiRun');btn.disabled=true;btn.textContent='ИИ анализирует…';const items=aiCollect();
  aiStatus('Отправляем '+items.length+' отзывов в Cloudflare Workers AI…',false);
  try{
@@ -158,7 +156,6 @@ $('aiRun').addEventListener('click',async()=>{
   aiStatus(s.includes('Failed to fetch')?'Не удалось подключиться к Worker (CORS, сеть или неправильный URL).':s.includes('aborted')?'Истекло время ожидания ИИ.':'Ошибка ИИ: '+s.slice(0,200),true);
  }finally{btn.disabled=false;btn.textContent='Повторить ИИ-анализ ↗'}
 });
-try{$('aiEndpoint').value=localStorage.getItem('invisible-business-ai-endpoint')||''}catch{}
 
 
 const sample=[
