@@ -3,7 +3,7 @@
 Публичный каталог независимых приложений. Сайт публикуется из `main` через GitHub Pages.
 
 - Главная страница: `index.html`
-- Невидимый бизнес: `apps/invisible-business/` — локальная проверка жалоб; дополнительный ИИ-анализ через Puter.js с согласием пользователя и месячным бесплатным лимитом Puter
+- Невидимый бизнес: `apps/invisible-business/` — локальная проверка жалоб; дополнительный ИИ-анализ через Cloudflare Workers AI с согласия пользователя (после подключения бесплатного Worker; инструкция в apps/invisible-business/cloudflare/)
 - Бюро других жизней: `apps/bureau-other-lives/`
 - Бегемот: `apps/begemot/`
 - Автоматическая публикация: `.github/workflows/pages.yml`
