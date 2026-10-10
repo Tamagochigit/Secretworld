@@ -15,7 +15,7 @@ class Links(HTMLParser):
             if attrs.get(name):
                 self.refs.append(attrs[name])
 
-pages = [ROOT / "index.html", ROOT / "apps/bureau-other-lives/index.html", ROOT / "apps/begemot/index.html", ROOT / "apps/begemot/iphone/index.html", ROOT / "apps/begemot/privacy.html", ROOT / "apps/begemot/us/index.html", ROOT / "apps/begemot/admin/index.html"]
+pages = [ROOT / "index.html", ROOT / "apps/bureau-other-lives/index.html", ROOT / "apps/begemot/index.html", ROOT / "apps/invisible-business/index.html", ROOT / "apps/begemot/iphone/index.html", ROOT / "apps/begemot/privacy.html", ROOT / "apps/begemot/us/index.html", ROOT / "apps/begemot/admin/index.html"]
 for page in pages:
     parser = Links()
     parser.feed(page.read_text(encoding="utf-8"))
