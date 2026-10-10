@@ -61,6 +61,7 @@ export default {
    const result=await env.AI.run(MODEL,{messages:[{role:"user",content:instructions}],max_tokens:1600,temperature:0.2,stream:false});
    return json(parseAnswer(result),200,ORIGIN);
   }catch(error){
+   console.error("AI inference failure", String(error?.message||error||"unknown").slice(0,350));
    const message=String(error?.message||"");
    if(/quota|limit|exceed|capacity|payment|neurons|429/i.test(message))return json({error:"Бесплатная квота ИИ закончилась или модель перегружена. Локальный анализ доступен."},429,ORIGIN);
    return json({error:"ИИ временно недоступен. Повторите запрос позже."},503,ORIGIN);
