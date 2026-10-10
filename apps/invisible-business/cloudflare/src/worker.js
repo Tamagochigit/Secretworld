@@ -58,8 +58,7 @@ export default {
    "Нумерованные отзывы:\n"+reviews.map(r=>"["+r.id+"] "+r.text).join("\n")
   ].join("\n");
   try{
-   const result=await env.AI.run(MODEL,{messages:[{role:"user",content:instructions}],max_tokens:1600,temperature:0.2,stream:false});
-   console.log("AI_RESPONSE_SHAPE",JSON.stringify({kind:typeof result,keys:Object.keys(result||{}).slice(0,12),choicesKind:typeof result?.choices,choicesLen:result?.choices?.length,choiceMessageKeys:Object.keys(result?.choices?.[0]?.message||{}),contentType:typeof result?.choices?.[0]?.message?.content,responseType:typeof result?.response,resultType:typeof result?.result}).slice(0,650));
+   const result=await env.AI.run(MODEL,{messages:[{role:"user",content:instructions}],max_completion_tokens:1800,temperature:0.2,chat_template_kwargs:{enable_thinking:false},reasoning_effort:null,stream:false});
    return json(parseAnswer(result),200,ORIGIN);
   }catch(error){
    console.error("AI inference failure", String(error?.message||error||"unknown").slice(0,350));
